@@ -51,10 +51,11 @@ print('\nDo you want to change the directory?  Y/N')
 print('Directory is: ', dir_path)
 choice=input()
 if choice==('Y' or 'y'):
-    dir_path=input('Please, enter the new absolutely directory:\n')
+    dir_path1=input('Please, enter the new absolutely directory:\n')
+dir_path=os.path.join(dir_path1)
 text=input('Please, enter the word: ')    
 arr=[]
 final_files=[]
 flag=True
 
-IO(dir_path, text, final_files)
+IO(dir_path, text, final_files, flag)
