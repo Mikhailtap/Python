@@ -1,6 +1,6 @@
 import os
 
-def search_word(dir_path, text, arr, final_files, flag_files):
+def search_word(dir_path, text, arr, final_files, flag_files): #проходит по файлам
     os.chdir(dir_path)
     print('\nТекущая директория поиска:\n ', dir_path, '\n')
     files=os.listdir()
@@ -23,26 +23,26 @@ def search_word(dir_path, text, arr, final_files, flag_files):
         flag_files=False
     return final_files, flag_files
 
-def IO(dir_path, text, final_files, flag):
-    search_word(dir_path, text, arr, final_files, flag)
-    if flag:
+def IO(dir_path, text, final_files, flag_files): #выводит все на экран
+    arr=[]
+    search_word(dir_path, text, arr, final_files, flag_files)
+    if flag_files:
         print('В директории со словом "', text, '" обнаружены следующие файлы:\n')
         for i in range(len(final_files)):
             print(final_files[i])
-    print('\nВ текущей директории обнаружены следующие папки: ')
+    print('\nОбнаружены следующие папки: ')
     close=True
     while close==True:
         print('0', '\tClose the program\n')
         for i in enumerate(arr, 1):
             print(i, '\n')
         folder=int(input('Введите тот порядковый номер, который хотите просмотреть: '))
-        if folder==0: break
+        if folder==0: 
+            close=False
+            break
         dir_path=arr[folder-1]
         final_files=[]
-        IO(dir_path, text, final_files)
-        close_r=input('Cansel program?  Y/N\n')
-        if close_r=='Y' or close_r=='y':
-            close==False
+        IO(dir_path, text, final_files, flag_files)
         break
     pass
 
@@ -52,7 +52,7 @@ print('Directory is: ', dir_path)
 choice=input()
 if choice==('Y' or 'y'):
     dir_path1=input('Please, enter the new absolutely directory:\n')
-dir_path=os.path.join(dir_path1)
+    dir_path=os.path.join(dir_path1)
 text=input('Please, enter the word: ')    
 arr=[]
 final_files=[]
