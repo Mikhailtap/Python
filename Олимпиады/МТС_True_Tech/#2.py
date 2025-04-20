@@ -4,7 +4,7 @@ else: flag=False
 b='MTS'
 if 3<=len(a)<=10000 and flag:
     i=j=0
-    while i<len(a) and j<len(b):
+    while i<len(a) and j<len(b): #реализация перебора без кэширования
         if a[i]==b[j]:
             j+=1
         i+=1
